@@ -3,6 +3,8 @@ const path = require("path");
 const { initSocket } = require("./socket");
 const app = express();
 
+const port = process.env.PORT || 8000; 
+
 app.set("view engine", "ejs");
 app.use("views", express.static(path.join(__dirname, "views")));
 
@@ -18,7 +20,7 @@ app.get("/chat/:id", (req, res) => {
   res.render("chat");
 });
 
-const server = app.listen(8000, () =>
+const server = app.listen(port, () =>
   console.log("listening on http://localhost:8000")
 );
 
